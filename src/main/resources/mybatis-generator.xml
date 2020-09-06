@@ -14,6 +14,8 @@
         <!--自定义插件-->
         <plugin type="pers.jssd.test.mybatis.LombokPlugin">
             <property name="builder" value=""/>
+            <property name="noArgsConstructor" value=""/>
+            <property name="allArgsConstructor" value=""/>
         </plugin>
 
         <commentGenerator>
@@ -24,6 +26,7 @@
             <!-- 在生成的实体类中附带表字段的注释  MBG1.3.3中新增的功能 -->
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
+
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
                         connectionURL="jdbc:mysql://rm-bp17rs6x3634h47kkdo.mysql.rds.aliyuncs.com:3306/jssdmysql"
@@ -52,16 +55,16 @@
            targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
         -->
         <javaModelGenerator targetPackage="pers.jssd.test.pojo" targetProject="src/main/java">
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="false"/>
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格  -->
             <property name="trimStrings" value="true"/>
-            <!-- 是否对model添加 构造函数 -->
-            <property name="constructorBased" value="false"/>
             <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
             <property name="trimStrings" value="true"/>
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
-            <property name="immutable" value="true"/>
+            <property name="immutable" value="false"/>
         </javaModelGenerator>
 
         <!-- 生成映射文件mapper接口的包名和位置 targetPackage 改为你对应的 dao 位置-->
@@ -108,6 +111,14 @@
             <!--insert返回id-->
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride property="clazz" column="class"/>
+        </table>
+        <table tableName="courses">
+            <!--insert返回id-->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="student_courses">
+            <!--insert返回id-->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 

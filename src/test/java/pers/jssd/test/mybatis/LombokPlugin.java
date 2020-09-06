@@ -25,7 +25,7 @@ public class LombokPlugin extends PluginAdapter {
      * LombokPlugin constructor
      */
     public LombokPlugin() {
-        annotations = new LinkedHashSet<Annotations>(Annotations.values().length);
+        annotations = new LinkedHashSet<>(Annotations.values().length);
     }
 
     /**
@@ -98,6 +98,7 @@ public class LombokPlugin extends PluginAdapter {
                                               IntrospectedTable introspectedTable, ModelClassType modelClassType) {
         return false;
     }
+
 
     /**
      * Prevents all setters from being generated
@@ -192,7 +193,7 @@ public class LombokPlugin extends PluginAdapter {
             this.paramName = paramName;
             this.name = name;
             this.javaType = new FullyQualifiedJavaType(className);
-            this.options = new ArrayList<String>();
+            this.options = new ArrayList<>();
         }
 
         private static Annotations getValueOf(String paramName) {
