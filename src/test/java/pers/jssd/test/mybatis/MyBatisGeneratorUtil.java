@@ -14,19 +14,19 @@ import java.util.List;
  */
 public class MyBatisGeneratorUtil {
 
-    private void generator() throws Exception{
+    private void generator() throws Exception {
 
         List<String> warnings = new ArrayList<String>();
         //指向逆向工程配置文件
-        File configFile = new File("D:\\private\\test\\src\\main\\resources\\mybatis-generator.xml");
+        File configFile = new File("D:\\MyCode\\elegence-service\\src\\main\\resources\\mybatis-generator.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(true);
-        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
-                callback, warnings);
+        MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
 
     }
+
     public static void main(String[] args) throws Exception {
         try {
             MyBatisGeneratorUtil generatorSqlmap = new MyBatisGeneratorUtil();
@@ -35,5 +35,5 @@ public class MyBatisGeneratorUtil {
             e.printStackTrace();
         }
     }
-    
+
 }

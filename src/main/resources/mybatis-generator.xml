@@ -8,6 +8,14 @@
     <!--<classPathEntry location="D:\IDEA_Demo\SSMDemo\lib\mysql-connector-java-5.1.25-bin.jar"/>-->
 
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--序列化插件-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!--自定义插件-->
+        <plugin type="pers.jssd.test.mybatis.LombokPlugin">
+            <property name="builder" value=""/>
+        </plugin>
+
         <commentGenerator>
             <!-- 是否去除自动生成的日期 true：是 ： false:否 -->
             <property name="suppressDate" value="true"/>
@@ -48,6 +56,12 @@
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格  -->
             <property name="trimStrings" value="true"/>
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="false"/>
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="true"/>
         </javaModelGenerator>
 
         <!-- 生成映射文件mapper接口的包名和位置 targetPackage 改为你对应的 dao 位置-->
@@ -91,6 +105,8 @@
             <generatedKey column="uid" sqlStatement="mysql"/>
         </table>-->
         <table tableName="students">
+            <!--insert返回id-->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
             <columnOverride property="clazz" column="class"/>
         </table>
     </context>

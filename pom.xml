@@ -8,10 +8,10 @@
         <version>2.3.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>pers.jssd.test</groupId>
-    <artifactId>test</artifactId>
+    <groupId>pers.jssd.elegant</groupId>
+    <artifactId>elegant</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>test</name>
+    <name>elegant</name>
     <description>优雅的异常处理实践</description>
 
     <properties>
@@ -45,7 +45,8 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
+
+        <!-- mybatis逆向工程依赖 -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
