@@ -18,7 +18,7 @@ public class MyBatisGeneratorUtil {
 
         List<String> warnings = new ArrayList<String>();
         //指向逆向工程配置文件
-        File configFile = new File("D:\\MyCode\\elegence-service\\src\\main\\resources\\mybatis-generator.xml");
+        File configFile = new File("D:\\private\\elegant\\src\\main\\resources\\mybatis-generator.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         DefaultShellCallback callback = new DefaultShellCallback(true);
